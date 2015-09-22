@@ -1,0 +1,12 @@
+<div class="panel panel-default">
+<div class="panel-heading">
+  <h1>Edit Artist <h1>
+</div>
+<%= simple_form_for @artist do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description  %>
+  <%= f.input :image_url %>
+  <%= f.submit "Submit".html_safe, class: "btn btn-lg btn-danger"%>
+<% end %>
+
+</div>

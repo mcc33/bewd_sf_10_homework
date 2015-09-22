@@ -1,0 +1,35 @@
+<div class="col-xs-12">
+  <div class="table-responsive">
+  <h1 style="#color:#666666;"> Our Cool Artists </h1>
+  <table class="table table-hover">
+    <!-- THis is a table row with headers -->
+    <tr>
+      <th> Artist Image </th>
+      <th> Name </th>
+      <th> Genre </th>
+      <th> Actions </th>
+    </tr>
+    <%@artists.each do |artist| %>
+    <tr>
+    <td class="col-md-2"> <%= image_tag(artist.image_url, class: 'img-thumbnail img responsive') %></td>
+    <!-- Image tag -->
+    <td> <%=artist.name %></td>
+    <td> <%=artist.description %></td>
+    <td>
+      <%=link_to 'Show', artist_path(artist), class: 'btn btn-default btn-xs' %>
+      <!-- The artist_path(artist) will give the specific 'show' page, depending on which artist it is.
+      Here, artist_path is defined in the 'rake routes', and the argument passed, 'artist', refers to a specific artist. -->
+      <%=link_to 'Edit', edit_artist_path(artist), class: 'btn btn-success btn-xs' %>
+      <%= link_to 'Delete', artist, method: :delete, data:
+      {confirm: "You sure homey?"}, class: 'btn btn-danger btn-xs' %>
+    </td>
+    </tr>
+    <% end %>
+
+  </table>
+ </div>
+</div>
+
+<div class="well">
+  <%= link_to "Add new artist", new_artist_path, class: 'btn btn-lg btn-default' %>
+</div>
